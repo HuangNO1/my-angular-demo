@@ -1,0 +1,76 @@
+<!-- 第一種綁定 style -->
+<h1 class="{{ skyBlue }}">{{ msg }}</h1>
+
+<!-- func -->
+<span>4 + 7 = {{ sum(4, 7) }}</span>
+
+<!-- 字定義屬性 -->
+<h3 [attr.data-index]="msg"></h3>
+
+<!-- 第二種綁定 style，綁定 html 自帶屬性 -->
+<h4 [class]="skyBlue">AAA</h4>
+
+<!-- 第三種綁定 style -->
+<h4 [attr.class]="skyBlue">AAA</h4>
+
+<!-- inner HTML 放置 HTML 模板 -->
+<h3 [innerHTML]="htmlStr"></h3>
+
+<!-- 第四種 綁定 style  對象模式-->
+<h4 [class]="classObj">AAAAA</h4>
+<h4 [class]="{ skyBlue: isShow }">DDDDD</h4>
+
+<!-- array ，直接放 array 也可以-->
+<h4 [class]="['skyBlue', 'active', 'abc']">array class</h4>
+<h4 [class]="arrayStr">array class 2</h4>
+
+<!-- 綁定事件 -->
+<button (click)="changeColor()">Change color</button>
+<button (click)="changeBtn($event)">Change btn color</button>
+
+<!-- 條件渲染 -->
+<!-- 類似 v-if，會重新渲染 耗資源，適合較少次切換 -->
+<br>
+<span *ngIf="ifColor">Purple</span>
+<span *ngIf="!ifColor">Red</span>
+<br>
+<!-- 類似 v-on，適合如果需要多次切換的情況 -->
+<span [style.display]="ifColor ? 'block' : 'none'">Purple</span>
+<span [style.display]="!ifColor ? 'block' : 'none'">Red</span>
+
+<!-- for -->
+<ul>
+    <li *ngFor="let item of items; let i = index" (click)="alert(item, i)">
+        {{ i }} : {{ item }}
+    </li>
+</ul>
+
+<!-- switch -->
+<span [ngSwitch]="HomeState">
+    <p *ngSwitchCase="true">
+        is home
+    </p>
+    <p *ngSwitchCase="false">
+        id not home
+    </p>
+    <p *ngSwitchDefault>
+        hello home
+    </p>
+</span>
+
+<!-- form -->
+<div>
+    <label for="input-username">Username</label>
+    <input id="input-username" type="text" [(ngModel)]="username">
+    <label for="input-password">Password</label>
+    <input id="input-password" type="text" [(ngModel)]="password">
+</div>
+<div>username: {{ username }} , password: {{ password }}</div>
+
+<!-- 使用管道改變顯示， e.g 大小寫 -->
+<div>username: {{ username | uppercase }} , password: {{ password }}</div>
+<div>object: {{ classObj | json }}</div>
+<div>time: {{ time | date: "yyyy/MM/dd" }}</div>
+
+<!-- 自定義管道 -->
+<div>{{ username }}</div>
