@@ -6,7 +6,15 @@
     <button nz-button nzType="primary" [routerLink]="['/SignUp']">Sign Up</button>
   </nz-space-item>
 </nz-space> -->
-<button nz-button nzType="primary" [routerLink]="['/sign/signIn']">Sign In</button>
-<button nz-button nzType="primary" [routerLink]="['/sign/signUp']">Sign Up</button>
 
-<router-outlet></router-outlet>
+<nz-content>
+  <nz-card id="sign-card">
+    <router-outlet></router-outlet>
+    <button nz-button nzType="primary" [routerLink]="['/sign/signIn']">
+      Sign In
+    </button>
+    <button nz-button nzType="primary" [routerLink]="['/sign/signUp']">
+      Sign Up
+    </button>
+  </nz-card>
+</nz-content>
